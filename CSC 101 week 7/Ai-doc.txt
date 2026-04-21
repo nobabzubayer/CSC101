@@ -1,0 +1,5 @@
+https://www.perplexity.ai/search/i-am-a-student-learning-python-_hrGit0RRG2wy7oc7uauOw
+
+
+What the AI Helped Me With:
+The AI provided a simple Python script using with open() to safely read myfile.txt, display its name and content, added detailed comments for each step, and showed example output matching my file's shopping list.

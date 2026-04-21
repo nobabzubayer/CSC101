@@ -1,0 +1,9 @@
+My Reflection
+What surprised me about working with files:
+I was surprised how simple and safe Python makes file operations with with open()—it automatically handles closing the file, preventing data loss or memory issues I expected from other languages.
+
+How this connects to business:
+Reading files is key for data analysts to process sales logs or customer data in retail jobs, automating reports from text/CSV files to inform inventory decisions.
+
+Next thing I want to learn:
+Writing to files and basic error handling like try-except for when files don't exist.
