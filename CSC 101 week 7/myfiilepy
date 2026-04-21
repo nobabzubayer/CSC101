@@ -1,0 +1,17 @@
+# Step 1: Open the file in read mode ('r'). This gives us a file object to work with.
+with open('myfile.txt', 'r') as file:
+    # Step 2: Read the entire contents of the file into a string variable.
+    content = file.read()
+    
+    # Step 3: Calculate the number of characters in the content (including spaces and newlines).
+    char_count = len(content)
+    
+    # Step 4: Display the filename directly (hardcoded since it's known).
+    print("Filename: myfile.txt")
+    
+    # Step 5: Display the file contents.
+    print("Contents:")
+    print(content)
+    
+    # Step 6: Display the character count.
+    print(f"Number of characters: {char_count}")
