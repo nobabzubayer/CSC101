@@ -1,0 +1,70 @@
+def load_transactions(filename):
+    """Read lines from a transaction file safely."""
+    try:
+        with open(filename, "r") as file:
+            lines = file.readlines()
+        return [line.strip() for line in lines if line.strip()]
+    except FileNotFoundError:
+        print(f"File '{filename}' not found!")
+        return []
+
+
+def process_transactions(lines):
+    """Process transaction lines into clean data."""
+    transactions = []
+    failed_count = 0
+
+    for line in lines:
+        try:
+            if "," not in line:
+                raise ValueError("Missing comma")
+
+            description, amount_str = line.split(",", 1)
+            amount = float(amount_str)
+
+            transactions.append({
+                "description": description.strip(),
+                "amount": amount
+            })
+        except (ValueError, IndexError):
+            failed_count += 1
+
+    print(f"Skipped {failed_count} bad line(s).")
+    return transactions
+
+
+def show_summary(transactions):
+    """Display results to the user."""
+    if not transactions:
+        print("No valid transactions.")
+        return
+
+    total_income = sum(t["amount"] for t in transactions if t["amount"] > 0)
+    total_expenses = sum(t["amount"] for t in transactions if t["amount"] < 0)
+    net_amount = total_income + total_expenses
+
+    print("\nSummary")
+    print("-" * 20)
+    print(f"Transactions processed: {len(transactions)}")
+    print(f"Total income: ${total_income:.2f}")
+    print(f"Total expenses: ${total_expenses:.2f}")
+    print(f"Net amount: ${net_amount:.2f}")
+
+
+def main():
+    print("Personal Finance Manager")
+    print("=" * 30)
+
+    filename = "transactions.txt"
+    raw_lines = load_transactions(filename)
+
+    if not raw_lines:
+        print("No data to process!")
+        return
+
+    transactions = process_transactions(raw_lines)
+    show_summary(transactions)
+
+
+if __name__ == "__main__":
+    main()
